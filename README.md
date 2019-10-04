@@ -42,5 +42,18 @@ You can also implement the `UIColor.clear` to make the background transparent.
 In case you need to specify a custom size or origin for the BottomSheet frame, you can implement this property with a custom rect.
 
 
+## Customization
+To customize the BottomSheetController that will contain your view or viewController, you should call the `.apply(style:)` method, specifying whichever available properties you want it to have.
+
+e.g.:
+If you wanted it to be rounded by 15 radius and have a shadow with an offset of -1 height
+```swift
+let style: BottomSheetStyle = [
+    .rounded(radius: 15, masksToBounds: false),
+    .shadowed(radius: 10, opacity: 0.4, offset: CGSize(width: 0, height: -1))
+]
+bottomSheetController.apply(style: style)
+```
+
 ## License
 BottomSheet is available under the MIT license. See the [LICENSE](https://github.com/pogramos/BottomSheet/blob/master/LICENSE.md) file for more info.
