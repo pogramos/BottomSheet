@@ -31,7 +31,7 @@ extension ListViewController: BaseConfiguration {
     }
 
     func configConstraints() {
-        collectionView.constrain(side: .edges, distance: 0)
+        collectionView.constrain(distance: 8)
     }
 }
 
@@ -80,7 +80,7 @@ extension Cell: BaseConfiguration {
     }
 
     func configConstraints() {
-        label.constrain(side: .edges, distance: 8)
+        label.constrain(distance: 8)
     }
 
 

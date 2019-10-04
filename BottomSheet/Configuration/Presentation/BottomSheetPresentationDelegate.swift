@@ -18,3 +18,14 @@ protocol BottomSheetPresentationDelegate: AnyObject {
     /// defaults to half of the screen
     var frameOfPresentedViewInContainerView: CGRect { get }
 }
+
+extension BottomSheetPresentationDelegate {
+    var backgroundColor: UIColor? {
+        return nil
+    }
+
+    var frameOfPresentedViewInContainerView: CGRect {
+        let half = UIScreen.main.bounds.height/2
+        return CGRect(x: 0, y: half, width: UIScreen.main.bounds.width, height: half)
+    }
+}

@@ -12,8 +12,6 @@ final class BottomSheetController: UIViewController {
     var style: BottomSheetStyle = []
     var type: BottomSheetControllerType = .collection
 
-    private var contentViewController: UIViewController
-
     // MARK: - Views
 
     private let button: UIButton = {
@@ -28,10 +26,22 @@ final class BottomSheetController: UIViewController {
 
     private let contentView = UIView()
 
-    init(with contentViewController: UIViewController) {
-        self.contentViewController = contentViewController
+    init(withController contentViewController: UIViewController) {
         super.init(nibName: nil, bundle: nil)
         super.modalPresentationStyle = .custom
+
+        // MARK: - ContentViewController Config
+        addChild(contentViewController)
+        contentView.addSubview(contentViewController.view)
+        contentViewController.didMove(toParent: self)
+    }
+
+    init(withView subview: UIView) {
+        super.init(nibName: nil, bundle: nil)
+        super.modalPresentationStyle = .custom
+
+        contentView.addSubview(subview)
+        subview.constrain(distance: 8)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -56,11 +66,6 @@ extension BottomSheetController: BaseConfiguration {
 
         view.addSubview(button)
         view.addSubview(contentView)
-
-        // MARK: - ContentViewController Config
-        addChild(contentViewController)
-        contentView.addSubview(contentViewController.view)
-        contentViewController.didMove(toParent: self)
     }
 
     func configConstraints() {

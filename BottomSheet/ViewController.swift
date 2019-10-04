@@ -30,7 +30,10 @@ extension ViewController: BaseConfiguration {
     func configViews() {
         listController = ListViewController()
         listController.collectionView.delegate = self
-        bottomSheetController = BottomSheetController(with: listController)
+        let label = UILabel()
+        label.text = "TESTE"
+        label.textAlignment = .center
+        bottomSheetController = BottomSheetController(withController: listController)
 
         let style: BottomSheetStyle = [
             .rounded(radius: 15, masksToBounds: false),

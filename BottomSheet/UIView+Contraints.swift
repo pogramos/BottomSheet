@@ -5,7 +5,7 @@ enum Side {
 }
 
 extension UIView {
-    func constrain(side: Side, distance: CGFloat) {
+    func constrain(distance: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(
             [
